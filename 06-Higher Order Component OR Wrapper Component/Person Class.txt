@@ -1,0 +1,26 @@
+import React, { Component, Fragment } from "react";
+import classes from "./Person.module.css";
+import Auxiliary from "../../../hoc/Auxiliary";
+import WithClass from "../../../hoc/WithClass";
+
+class Person extends Component {
+  render() {
+    return (
+      // Fragment --> <Fragment></Fragment>  Built-in Wrapper Component.
+      // Auxiliary --> Own Wrapper Component or Higher Order Component [HOC] Without Css style.
+      // Auxiliary allow us to wrap an adjacent elements without adding more wrapper tags like div.
+      // WithClass --> Own Wrapper Component or Higher Order Component [HOC] With Css style.
+      // WithClass allow us to wrap an adjacent elements without adding more wrapper tags like div.
+      <WithClass classes={classes.Div}>
+        <input
+          type="text"
+          onChange={this.props.userInputType}
+          value={this.props.username}
+        />
+        <p onClick={this.props.click}>Username: {this.props.username}</p>
+      </WithClass>
+    );
+  }
+}
+
+export default Person;

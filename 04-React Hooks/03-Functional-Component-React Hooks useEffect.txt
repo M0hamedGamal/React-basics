@@ -1,0 +1,28 @@
+  // React Hook Method.
+  useEffect(() => {
+    console.log(
+      "[Cockpit.js] 1st useEffect work as componentDidMount method & componentDidUpdate method & work after every render of Own functional component"
+    );
+  });
+
+  // React Hook Method.
+  useEffect(() => {
+    console.log(
+      "[Cockpit.js] 2nd useEffect work When lenPersonForms is updated only [Removing form]."
+    );
+  }, [props.lenPersonForms]); // Second arg of useEffect works with props.lenPersonForms into array [We can have multiple args].
+
+  // React Hook Method.
+  useEffect(() => {
+    console.log("[Cockpit.js] 3rd useEffect work for Once.");
+    return () => {
+      console.log(
+        "[Cockpit.js] 3rd useEffect work when this is last time for work with own component [Cleanup]."
+      );
+    };
+  }, []); // Second arg of useEffect is empty array meaning work for Once only.
+
+
+// React.memo() --> Store snapshot from props & state & don't re-render when there's no changes.
+// React.memo() --> work like shouldComponentUpdate method.
+export default React.memo(Cockpit);

@@ -1,0 +1,30 @@
+import React, { useEffect, useRef } from "react";
+import classes from "./Cockpit.module.css";
+
+const Cockpit = (props) => {
+  // Get ref of button.
+  const toggleBtnRef = useRef();
+
+  // React Hook Method.
+  useEffect(() => {
+
+    // Auto click on button when rendering component.
+    toggleBtnRef.current.click();
+
+    return () => {
+      console.log(
+        "[Cockpit.js] useEffect work when this is last time for work with own component [Cleanup]."
+      );
+    };
+  }, []); // Second arg of useEffect is empty array meaning work for Once only.
+
+
+  return (
+    <div className={classes.Cockpit}>
+      <button ref={toggleBtnRef} className={btnClasses} onClick={props.toggle}>
+        Toggle Person
+      </button>
+    </div>
+  );
+};
+export default Cockpit;

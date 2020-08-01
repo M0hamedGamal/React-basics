@@ -1,0 +1,29 @@
+import React, { Component, Fragment } from "react";
+// npm i --save prop-types in terminal
+import PropTypes from "prop-types";
+
+import classes from "./Person.module.css";
+
+class Person extends Component {
+  render() {
+    return (
+      <div classes={classes.Div}>
+        <input
+          type="text"
+          onChange={this.props.userInputType}
+          value={this.props.username}
+        />
+        <p onClick={this.props.click}>Username: {this.props.username}</p>
+      </div>
+    );
+  }
+}
+
+// PropTypes takes object of prop's name: value of what is expected to be.
+Person.propTypes = {
+  userInputType: PropTypes.func,
+  username: PropTypes.string,
+  click: PropTypes.func,
+};
+
+export default Person;

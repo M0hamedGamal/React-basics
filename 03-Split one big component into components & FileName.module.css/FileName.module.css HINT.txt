@@ -1,0 +1,5 @@
+To work with 'classes' like [import classes from "./Coockpit.module.css";]
+
+You need to check "react-scripts": "has version higher that 1.0.0", into 'package.json' file
+
+and change fileName.css to FileName.module.css

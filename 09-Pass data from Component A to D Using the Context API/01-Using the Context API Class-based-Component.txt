@@ -1,0 +1,73 @@
+From Class A to Class D Without passing through B & C.-
+-------------------------------------------------------
+Class A-
+--------
+import AuthContext from "../context/auth-context";
+
+class App extends Component {
+render() {
+
+    }
+return (
+      <div className={classes.App}>
+      
+        <AuthContext.Provider
+          value={{
+            isAuth: this.state.authenticated,
+            login: this.loginHandler,
+          }}
+        >
+            <Cockpit
+              toggle={this.toggleForms}
+              show={this.state.showForms}
+              lenPersonForms={this.state.persons.length}
+            />
+
+            <Person
+
+            />
+
+        </AuthContext.Provider>
+      </div>
+    );
+  }
+-------------------------------------------------------
+Class D-
+--------
+import AuthContext from "../../../context/auth-context";
+
+class Person extends Component {
+
+  // contextType --> reserved variable to create context to own Component.
+  static contextType = AuthContext;
+
+  render() {
+    return (
+      <div>
+
+        {this.context.isAuth ? <p>Authenticated</p> : <p>Please Log in!</p>}
+
+      </div>
+    );
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,82 @@
+import React, { Component } from "react";
+import "./App.css";
+
+import UserInput from "./UserInput/UserInput";
+import UserOutput from "./UserOutput/UserOutput";
+
+class App extends Component {
+  state = {
+    username: "Gemy",
+    persons: [
+      {
+        id: 1,
+        name: "Mohamed",
+      },
+      {
+        id: 2,
+        name: "Ali",
+      },
+      { id: 3, name: "Kimoz" },
+    ],
+    showField: true,
+  };
+
+  userNameChangedHandler = (event) => {
+    this.setState({
+      username: event.target.value,
+    });
+  };
+
+  toggleFeildHandler = () => {
+    const show = this.state.showField;
+    this.setState({
+      showField: !show,
+    });
+  };
+
+  clickToDelete = (index) => {
+    const persons = [...this.state.persons];
+
+    persons.splice(index, 1);
+
+    this.setState({
+      persons: persons,
+    });
+  };
+
+  render() {
+    let inputField = null;
+
+    if (this.state.showField) {
+      inputField = (
+        <div>
+          <UserInput
+            usernameChanged={this.userNameChangedHandler}
+            username={this.state.username}
+          />
+
+          {this.state.persons.map((person, index) => {
+            return (
+              <UserOutput
+                click={() => this.clickToDelete(index)}
+                username={person.name}
+                key={person.id}
+              />
+            );
+          })}
+        </div>
+      );
+    }
+
+    return (
+      <div className="App">
+        <button onClick={this.toggleFeildHandler}>Toggle Input Field</button>
+        <br />
+
+        {inputField}
+      </div>
+    );
+  }
+}
+
+export default App;

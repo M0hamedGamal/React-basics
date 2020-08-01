@@ -1,0 +1,29 @@
+  // Life cycle Hook Method.
+  constructor(props) {
+    super(props);
+    console.log("[App.js] constructor work before every thing");
+  }
+
+  // Life cycle Hook Method.
+  static getDerivedStateFromProps(props, state) {
+    console.log(
+      "[App.js] getDerivedStateFromProps work before rendering of any component"
+    );
+
+    return state;
+  }
+
+  // Life cycle Hook Method.
+  componentDidMount() {
+    console.log(
+      "[App.js] componentDidMount work after rendering of Own component for first time only"
+    );
+  }
+
+ render() {
+    console.log("[App.js]  render");
+
+    return (
+    );
+  }
+}

@@ -1,0 +1,34 @@
+import React, { Component } from "react";
+
+class Persons extends Component {  
+  // Life cycle Hook Method.
+  shouldComponentUpdate(nextProps, nextState) {
+    // Check any prop from all of props is changed or not. 
+    // [Not efficient that I write all props manually]
+    if (nextProps.persons !== this.props.persons ||
+      nextProps.delete !== this.props.delete ||
+      nextProps.changed !== this.props.changed
+      ) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+--------------------------------------------------------------------------------------------------------
+// When we use PureComponent instead Component we don't need to shouldComponentUpdate method. Because it add all props into shouldComponentUpdate automatically.
+
+import React, { PureComponent } from "react";
+
+class Persons extends PureComponent {
+  // Life cycle Hook Method.
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   if (
+  //     nextProps.persons !== this.props.persons ||
+  //     nextProps.delete !== this.props.delete ||
+  //     nextProps.changed !== this.props.changed
+  //   ) {
+  //     return true;
+  //   } else {
+  //     return false;
+  //   }
+  // }
