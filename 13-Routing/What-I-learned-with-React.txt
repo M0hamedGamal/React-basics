@@ -1,0 +1,62 @@
+    // Person Component.
+    // props --> get infromation from inside of Component.
+    // props --> That what into <person PROPS > </person>
+    const person = (props) => {
+    return (
+        <div>
+        <h1 onClick={props.click}> // Reseive the refrence of method 'switchNameHandler' to work with
+            My name is {props.name}, And I'm {props.age} years old.
+        </h1>
+        <input value={props.name} onChange={props.changed} />
+
+        // props.children --> That what between <person> PROPS.CHILDREN </person>
+        <p>{props.children}</p>
+        </div>
+    );
+    };
+
+    // App Component.
+    // Exported Component.
+    class App extends Component {
+    // state --> get infromation from outside of Component.
+    // state --> spicial keyword 'work with classes not normal functions'.
+    state = {
+        persons: [{ name: "Gemy", age: 24 }],
+    };
+
+    switchNameHandler = (newName) => {
+        this.setState({
+        persons: [{ name: newName, age: 24 }],
+        });
+    };
+
+    changeName = (event) => {
+    this.setState({
+        persons: [{ name: event.target.value, age: 24 }],
+        });
+    };
+
+
+  render() {
+    const style = {
+      margin: "12px",
+    };
+    return (
+      <div className="App">
+        <button
+            style={style}
+            onClick={this.switchNameHandler.bind(this, "Gemy")}>    // bind --> work with arg 'newName'
+            Switch Name
+            </button>
+            <Person
+            click={this.switchNameHandler.bind(this, "MohamedGamal")} // send refrence of method to Person Component.
+            changed={this.changeName}
+            name={this.state.persons[0].name}
+            age={this.state.persons[0].age}
+            >
+            This is my Info.
+            </Person>
+        </div>
+        );
+    }
+--------------------------------------------------------------------------------------
