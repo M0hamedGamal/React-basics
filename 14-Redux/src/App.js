@@ -1,6 +1,7 @@
 /* 
 npm i --save redux --> install redux lib.
 npm i --save react-redux --> connect redux to react.
+npm i --save redux-thunk --> add middleware between action & reducer to redux.
 
 
 */

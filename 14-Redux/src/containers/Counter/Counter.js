@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import CounterControl from "../../components/CounterControl/CounterControl";
 import CounterOutput from "../../components/CounterOutput/CounterOutput";
-import * as actionTypes from "../../store/actions";
+import * as actionCreators from "../../store/actions/index";
 
 class Counter extends Component {
   render() {
@@ -33,7 +33,7 @@ class Counter extends Component {
   }
 }
 
-// mapStateToProps --> is a function that takes state as a param & Connect with reducer's state into reducer.js.
+// mapStateToProps --> is a function that receives state as a param & Connect with reducer's state into reducer.js.
 // This function gets value of state into reducer & store it into props of this Component.
 const mapStateToProps = (state) => {
   return {
@@ -44,20 +44,18 @@ const mapStateToProps = (state) => {
   };
 };
 
-// mapDispatchToProps --> is a function that takes dispatch function as a param & Connect with reducer's action into reducer.js.
+// mapDispatchToProps --> is a function that receives dispatch function as a param & Connect with reducer's action into reducer.js.
 // This function updates value of state into reducer through action prop.
 const mapDispatchToProps = (dispatch) => {
   return {
     // 'type' property is V.IMPORTANT for dispatch function to work with action prop into reducer.js. Don't forget it.
     // type & val can be connected by reducer's action prop into reducer.js.
-    onIncCounter: () => dispatch({ type: actionTypes.INC }),
-    onDecCounter: () => dispatch({ type: actionTypes.DEC }),
-    onAddCounter: () => dispatch({ type: actionTypes.ADD, val: 10 }),
-    onSubCounter: () => dispatch({ type: actionTypes.SUB, val: 15 }),
-    onStoreResult: (ctr) =>
-      dispatch({ type: actionTypes.STORE_RESULT, counter: ctr }),
-    onDeleteResult: (id) =>
-      dispatch({ type: actionTypes.DELETE_RESULT, idResult: id }),
+    onIncCounter: () => dispatch(actionCreators.inc()),
+    onDecCounter: () => dispatch(actionCreators.dec()),
+    onAddCounter: () => dispatch(actionCreators.add(10)),
+    onSubCounter: () => dispatch(actionCreators.sub(15)),
+    onStoreResult: (ctr) => dispatch(actionCreators.storeResult(ctr)),
+    onDeleteResult: (id) => dispatch(actionCreators.deleteResult(id)),
   };
 };
 
